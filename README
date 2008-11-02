@@ -1,1 +1,29 @@
-aaa
+
+= mocksmtpd
+
+
+== Description
+
+
+== Installation
+
+=== Archive Installation
+
+	rake install
+
+=== Gem Installation
+
+        gem sources -a http://gems.github.com
+	gem install koseki-mocksmtpd
+
+== Features/Problems
+
+
+== Synopsis
+
+
+== Copyright
+
+Author:: KOSEKI Kengo <koseki@gmail.com>
+Copyright:: Copyright (c) 2008 
+License:: Ruby Licence

@@ -1,0 +1,4 @@
+require "rubygems"
+require "cutagem"
+ 
+CutAGemCommand.new(ARGV).run
