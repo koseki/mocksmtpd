@@ -16,7 +16,7 @@ AUTHOR            = "KOSEKI Kengo"
 EMAIL             = "koseki@gmail.com"
 DESCRIPTION       = "Mock SMTP server for development/testing."
 RUBYFORGE_PROJECT = "mocksmtpd"
-HOMEPATH          = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
+HOMEPATH          = "http://github.com/koseki/mocksmtpd/"
 BIN_FILES         = %w(mocksmtpd)
 
 VERS              = Mocksmtpd::VERSION

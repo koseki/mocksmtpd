@@ -1,0 +1,8 @@
+<!-- ADD -->
+
+<tr>
+<td><%= mail[:date].strftime("%Y-%m-%d %H:%M:%S") %></td>
+<td><a href="<%=h mail[:file] %>"><%=h mail[:subject] %></a></td>
+<td><%=h mail[:sender] %></td>
+<td><%=h mail[:recipients].to_a.join(",") %></td>
+</tr>
