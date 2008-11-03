@@ -4,6 +4,14 @@
 
 == Description
 
+Mocksmtpd is a SMTP server for developping and testing web application. This SMTP server does not send mail anywhere. Otherwise, save all mails as HTML format.
+
+You can test mail using browser testing tools like Selenium.
+
+=== Screenshot
+
+http://koseki2.tumblr.com/post/57148631
+http://koseki2.tumblr.com/post/57148564
 
 == Installation
 
@@ -13,8 +21,29 @@
 
 === Gem Installation
 
-        gem sources -a http://gems.github.com
+	gem sources -a http://gems.github.com
 	gem install koseki-mocksmtpd
+
+== Quick Start
+
+	$ mocksmtpd init
+	$ cd ./mocksmtpd
+	$ sudo mocksmtpd
+
+== Usaage
+
+	mocksmtpd init [dirname] ... create log,inbox dir and config file.
+	mocksmtpd                ... start as console mode.
+	mocksmtpd start          ... start as daemon.
+	mocksmtpd stop           ... stop running daemon.
+
+=== Options
+
+The default config file is ./mocksmtpd.conf, but you can specify any other file using -f option.
+
+	-f / --config=FILE       ... Specify config file.
+	--help                   ... Show help.
+        --version                ... Show version.
 
 == Features/Problems
 
