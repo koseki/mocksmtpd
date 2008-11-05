@@ -169,7 +169,7 @@ class Mocksmtpd
     begin
       Process.egid = gid
       Process.euid = uid
-    rescue
+    rescue NotImplementedError => e
     end
   end
 
