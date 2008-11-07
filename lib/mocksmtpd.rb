@@ -8,7 +8,7 @@ require 'nkf'
 require 'smtpserver'
 
 class Mocksmtpd
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
   TEMPLATE_DIR = Pathname.new(File.dirname(__FILE__)) + "../templates"
 
   include ERB::Util
@@ -170,6 +170,8 @@ class Mocksmtpd
       Process.egid = gid
       Process.euid = uid
     rescue NotImplementedError => e
+    rescue Errno::EPERM => e
+      @logger.warn("could not change euid/egid. #{e}")
     end
   end
 
