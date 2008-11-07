@@ -43,7 +43,7 @@ The default config file is ./mocksmtpd.conf, but you can specify any other file 
 
 	-f / --config=FILE       ... Specify config file.
 	--help                   ... Show help.
-        --version                ... Show version.
+	--version                ... Show version.
 
 == Features/Problems
 
