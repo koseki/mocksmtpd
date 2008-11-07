@@ -132,16 +132,27 @@ class Mocksmtpd
     puts "done"
   end
 
+  def create_logger(file = nil)
+    file = file.to_s.strip
+    file = nil if file.empty?
+    lvstr = @conf[:LogLevel].to_s.strip
+    lvstr = "INFO" unless %w{FATAL ERROR WARN INFO DEBUG}.include?(lvstr)
+    level = WEBrick::BasicLog.const_get(lvstr)
+    logger = WEBrick::Log.new(file, level)
+    logger.debug("Logger initialized")
+    return logger
+  end
+
   def start
     load_conf
-    @logger = WEBrick::Log.new(@logfile.to_s, WEBrick::BasicLog::INFO)
+    @logger = create_logger(@logfile)
     @daemon = true
     smtpd
   end
 
   def console
     load_conf
-    @logger = WEBrick::Log.new 
+    @logger = create_logger
     @daemon = false
     smtpd
   end
@@ -149,16 +160,19 @@ class Mocksmtpd
   def create_pid_file
     if @pidfile.exist?
       pid = @pidfile.read
-      @logger.warn("pid file already exists: #{pid}")
+      @logger.warn("pid file already exists: pid=#{pid}")
       exit 1
     end
+    pid = Process.pid
     open(@pidfile, "w") do |io|
-      io << Process.pid
+      io << pid
     end
+    @logger.debug("pid file saved: pid=#{pid} file=#{@pidfile}")
   end
 
   def delete_pid_file
     File.delete(@pidfile)
+    @logger.debug("pid file deleted: file=#{@pidfile}")
   end
 
   def init_permission
@@ -170,6 +184,7 @@ class Mocksmtpd
       Process.egid = gid
       Process.euid = uid
     rescue NotImplementedError => e
+      @logger.debug("Process.euid= not implemented.")
     rescue Errno::EPERM => e
       @logger.warn("could not change euid/egid. #{e}")
     end
@@ -179,8 +194,8 @@ class Mocksmtpd
     start_cb = Proc.new do
       @logger.info("Inbox: #{@inbox}")
       if @daemon
-      	@logger.info("LogFile: #{@logfile}")
-      	@logger.info("PidFile: #{@pidfile}")
+        @logger.debug("LogFile: #{@logfile}")
+        @logger.debug("PidFile: #{@pidfile}")
       end
 
       begin
@@ -269,6 +284,7 @@ class Mocksmtpd
     open(mail[:path], "w") do |io|
       io << @templates[:mail].result(binding)
     end
+    @logger.debug("mail saved: #{mail[:path]}")
   end
 
   def save_index(mail)
@@ -286,6 +302,7 @@ class Mocksmtpd
     open(path, "w") do |io|
       io << htmlsrc
     end
+    @logger.debug("index saved: #{path}")
   end
 
 end

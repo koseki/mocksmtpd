@@ -2,6 +2,9 @@
 
 * rescue Process.eid NotImplementedError.
 * warn when Process.eid can't be changed.
+* read log level from config file.
+* change param name from Loglevel to LogLevel
+* add debug log.
 
 == 0.0.2 / 2008-11-03
 

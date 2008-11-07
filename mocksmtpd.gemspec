@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = %q{koseki@gmail.com}
   s.executables = ["mocksmtpd"]
   s.extra_rdoc_files = ["README", "ChangeLog"]
-  s.files = ["README", "ChangeLog", "Rakefile", "bin/mocksmtpd", "test/mocksmtpd_test.rb", "test/test_helper.rb", "lib/mocksmtpd.rb", "lib/mocksmtpd.rb~", "lib/smtpserver.rb", "templates/html", "templates/html/index.erb", "templates/html/index.erb~", "templates/html/index_entry.erb", "templates/html/index_entry.erb~", "templates/html/mail.erb", "templates/html/mail.html.erb~", "templates/mocksmtpd.conf.erb"]
+  s.files = ["README", "ChangeLog", "Rakefile", "bin/mocksmtpd", "test/mocksmtpd_test.rb", "test/test_helper.rb", "lib/mocksmtpd.rb", "lib/smtpserver.rb", "templates/html", "templates/html/index.erb", "templates/html/index_entry.erb", "templates/html/mail.erb", "templates/mocksmtpd.conf.erb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/koseki/mocksmtpd/}
   s.rdoc_options = ["--title", "mocksmtpd documentation", "--charset", "utf-8", "--opname", "index.html", "--line-numbers", "--main", "README", "--inline-source", "--exclude", "^(examples|extras)/"]
